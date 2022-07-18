@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">   
+   
+</head>
+<body>
+    <script>
+
+        function sleep(milliseconds) {
+                  const date = Date.now();
+                  let currentDate = null;
+                  do {
+                    currentDate = Date.now();
+                  } while (currentDate - date < milliseconds);
+            }
+        
+            function weather () {
+                var weath=['Sunny','rainy']
+                var ra=weath[Math.floor(Math.random()*3)]
+                console.log(ra)
+                if(ra=='rainy'){
+                    console.log('rainy Weather wait for 5 Second')
+                    sleep(5000)
+        
+                }
+                else {
+                    console.log('Sunny Weather Enjoy Criket')
+                }
+            }
+            function game(remainingScore,array,array1) {
+                
+                
+                var r =remainingScore 
+                var batsmen=array.concat()
+                var bowlers=array1.concat()
+                    
+            var bat=0;
+                
+                var wickets=0;
+                var overs=0;
+                var score=0;
+        
+                console.log('Welcome to our Cricket Game')
+                console.log('---------------------------')
+        
+                sleep(2000)
+        
+                console.log('Match started ')
+                
+        
+        
+                sleep(2000)
+        
+                var maxOvers=2
+                while(overs<maxOvers && wickets<5 ){
+                // console.log('Your remainingScore is: '+r-score)
+                
+                    for(var i=1;i<=6;i++){
+                        sleep(2000)
+                        console.log('-----------')
+                        console.log(' Ball # '+overs +'.'+i)
+                        console.log('')
+                        var b=batsmen[wickets+1];
+                        console.log('Batsmen: '+b)
+                        console.log('')
+                        console.log("Bowlers: "+bowlers[overs+1])
+                        
+                        console.log('')
+                        var run=Math.floor(Math.random()*7)
+        
+                        if(run==0){
+                            wickets++;
+                            console.log('Oh No you are Out!');
+                            console.log('------')
+                            console.log('Ap out hochakey hein: '+b)
+                            console.log('------')
+                            
+                            sleep(1000)
+                            
+        
+                            console.log('Score: '+score+'/'+wickets)
+                        
+                            sleep(2000)
+        
+                            // console.log('Your remainig chasing_Score is: '+r-score)
+        
+                            if(wickets==5 ){
+                                console.log('All Out')
+                                console.log('****')
+                                break;
+                            }
+        
+                        }
+                        else{
+                            console.log('Great Shot '+run+' runs')
+                            // console.log(r)
+        
+                            score+=run
+                        
+                            // Scorereturn (score)
+                        
+            
+                        }
+                        console.log('-----------')
+                                if(r==0){
+                                console.log(' ')
+                                
+                                    }
+                                    else if(r==score){
+                                        
+                                        break;
+                                    }
+                            
+                            else{
+                                var re=r-score.toFixed(2)
+                                console.log('apka baqia score: '+ re)
+                            }
+                            
+        
+                            
+                    }
+                
+                    sleep(4000)
+                    overs++
+                    console.log('--------------------------------------')
+                    if(wickets!==5 && score!==r){
+                        console.log('Over # '+ overs +' Completed')
+                        console.log('Score: '+score+'/'+wickets)
+                        weather()
+                        var runrate=(score)/overs.toFixed(2)
+                        console.log('Your Current run rate is: '+runrate);
+        
+                        console.log('Projected Score is: '+runrate*maxOvers)
+                        console.log('**********')
+        
+                    }
+                    else if(r==score){
+                                console.log('Apnay Score pura krlia ha or ap jeet chukay hein')
+                                
+                                break;
+                    }
+                
+        
+                }
+        
+                
+                
+                return score
+            }
+            function toos(){
+                
+                var coin=Math.ceil(Math.random()*2)
+                return coin==1? 'Head':'Tail'
+            }
+            function cricket(){
+                var pakcoin='Head'
+                var Pakistan_Coin=0;
+                var India_Coin=0;
+        
+        var Pakistan_Batsmen=['Saeed Anwer','Imam','Amir sohail',
+        'Shoaib','Afridi',  'baber','rizwan','Nawaz']
+        
+        var Pakistan_Bowlers=['Hassan','Wasim_Akram','Wasim jnr','Saqlian_Mushtaq','Amir','Dhani']  
+          
+          
+            
+        var India_Batsmen=['rohit','Dhawan','Kholi',
+            'Pujara','Agarwal','Pant','hardik pandia']
+            
+            
+        var India_Bowlers=['Shami','Siraj','zahir','rp_singh','Khaleel','Hardik pandya']
+                console.log("Welcome to the Exciting Match Between Pakistan and India ")
+                sleep(3000)
+        
+                var coin=toos()
+                if(coin==pakcoin){
+                    console.log('Pakistan Won The Toss and Elected to bat First')
+        
+        
+                    
+                    var Pakistan_Coin=game(0,Pakistan_Batsmen,India_Bowlers)
+                        
+                    
+                
+        
+                    var chasing_Score=Pakistan_Coin+1
+                    console.log('-----------------------------------------------')
+                    console.log('chasing_Score To Chase: '+ chasing_Score );
+                    sleep(3000)
+        
+        
+                    // function Scorereturn (score) {	
+                    // 		 console.log('remaining Score is: '+ Pakistan_Coin-score) 
+                    // 	}
+        
+                    var India_Coin=game(chasing_Score,India_Batsmen,Pakistan_Bowlers);
+                    console.log('-----------------------------------------------')
+                    console.log('India Score: '+India_Coin);
+                    sleep(3000)
+        
+        
+                    }
+        
+        
+                    
+        
+                    else{
+                    console.log('India Won The Toss and Elected to bat First')
+        
+        
+            
+                    var India_Coin=game(0,India_Batsmen,Pakistan_Bowlers)
+                    console.log('-----------------------------------------------')
+                    console.log('chasing_Score To Chase: '+India_Coin );
+                    sleep(3000)
+        
+        
+                    
+                    var chasing_Score=India_Coin+1
+                    
+        
+        
+                    var Pakistan_Coin=game(chasing_Score,Pakistan_Batsmen,India_Bowlers);
+                    console.log('-----------------------------------------------')
+                    console.log('Pakistan Score: '+Pakistan_Coin);
+                    sleep(3000)
+        
+                    }
+        
+                    if(Pakistan_Coin<India_Coin){
+                        console.log('India Won the match')
+                    }
+                    else if(Pakistan_Coin==India_Coin){
+                        console.log("------------------ Koi nahi jeeta------------------------------")
+                    }
+                    else{
+                        console.log('Pakistan won the Match and india loss the Match')
+                    }
+                }
+                
+                cricket();
+        
+        
+        </script>	
+</body>
+</html>
